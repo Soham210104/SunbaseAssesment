@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 public class DataManager : MonoBehaviour
 {
     private readonly string apiUrl = "https://qa.sunbasedata.com/sunbase/portal/api/assignment.jsp?cmd=client_data";
+
     // Start is called before the first frame update
     void Start()
     {
