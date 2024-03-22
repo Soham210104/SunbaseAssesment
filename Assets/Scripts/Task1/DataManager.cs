@@ -20,11 +20,11 @@ public class DataManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: Keep this object alive when loading new scenes
+            DontDestroyOnLoad(gameObject); 
         }
         else if (instance != this)
         {
-            Destroy(gameObject); // Destroy extra instances
+            Destroy(gameObject); 
         }
     }
 
@@ -36,11 +36,9 @@ public class DataManager : MonoBehaviour
         StartCoroutine(GetClientCoroutine());
     }
 
-    // Update is called once per frame
     IEnumerator GetClientCoroutine() {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(apiUrl))
         {
-            // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
 
             if (webRequest.result != UnityWebRequest.Result.Success)
@@ -97,7 +95,6 @@ public class DataManager : MonoBehaviour
         return clientsList;
     }
 
-    // Method to get clients who are managers
     public List<Client> GetManagers()
     {
         return clientsList.FindAll(client => client.isManager);
@@ -133,7 +130,7 @@ public class DataManager : MonoBehaviour
     [Serializable]
     public class ClientsDataWrapper
     {
-        public Client[] clients; // Adjusted to array based on provided JSON structure
+        public Client[] clients; 
         public Dictionary<string, ClientDetail> data;
         public string label;
     }

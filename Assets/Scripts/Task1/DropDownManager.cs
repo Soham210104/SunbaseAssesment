@@ -19,22 +19,6 @@ public class DropDownManager : MonoBehaviour
     }
     public void HandleInputData(int val)
     {
-        //List<DataManager.Client> clientsToShow = new List<DataManager.Client>();
-
-        //if (val == 0) // All clients
-        //{
-        //    clientsToShow = dataManager.GetAllClients();
-
-        //}
-        //else if (val == 1) // Managers
-        //{
-        //    clientsToShow = dataManager.GetManagers();
-
-        //}
-        //else if (val == 2) // Non-Managers
-        //{
-        //    clientsToShow = dataManager.GetNonManagers();
-        //}
         List<DataManager.Client> clientsToShow = new List<DataManager.Client>();
 
         if (val == 0) // All clients
@@ -60,7 +44,6 @@ public class DropDownManager : MonoBehaviour
     {
         foreach (GameObject clientButton in Clients)
         {
-            // Enable all client buttons
             clientButton.SetActive(true);
         }
     }
@@ -69,7 +52,6 @@ public class DropDownManager : MonoBehaviour
     {
         foreach (GameObject clientButton in Clients)
         {
-            // Initially disable all client buttons
             clientButton.SetActive(false);
         }
 
@@ -77,11 +59,10 @@ public class DropDownManager : MonoBehaviour
         {
             if (client.isManager == isManager)
             {
-                // Find the client button GameObject by name
+                
                 GameObject clientButton = Array.Find(Clients, item => item.name == client.label);
                 if (clientButton != null)
                 {
-                    // Show the relevant client button
                     clientButton.SetActive(true);
                 }
             }

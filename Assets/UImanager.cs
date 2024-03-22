@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class UImanager : MonoBehaviour
 {
-    public TMP_Text detailsText; // Assign this in the inspector
+    public TMP_Text detailsText; 
     private DataManager dataManager;
     public GameObject panel;
     private void Start()
@@ -18,7 +18,7 @@ public class UImanager : MonoBehaviour
         }
         if (panel != null)
         {
-            panel.SetActive(false); // Make sure the panel is disabled on start
+            panel.SetActive(false); 
         }
 
         DOTween.Init();
@@ -28,8 +28,7 @@ public class UImanager : MonoBehaviour
     {
         if (panel != null)
         {
-            panel.SetActive(true); // Enable the panel
-            // Fade in the panel
+            panel.SetActive(true);
             panel.GetComponent<CanvasGroup>().DOFade(1, 0.5f).From(0);
         }
 
@@ -38,9 +37,8 @@ public class UImanager : MonoBehaviour
 
         if (detail != null)
         {
-            // Prepare the TextMeshPro text
+            
             detailsText.text = $"Name: {detail.name}\nPoints: {detail.points}\nAddress: {detail.address}";
-            // Slide up animation for TextMeshPro text
             detailsText.rectTransform.DOLocalMoveY(0, 0.5f).From(new Vector2(detailsText.rectTransform.localPosition.x, -50));
         }
         else
