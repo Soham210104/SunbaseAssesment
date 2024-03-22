@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
+
 public class UImanager : MonoBehaviour
 {
     public TMP_Text detailsText; // Assign this in the inspector
@@ -14,21 +16,32 @@ public class UImanager : MonoBehaviour
         {
             Debug.LogError("DataManager not found in the scene.");
         }
+        if (panel != null)
+        {
+            panel.SetActive(false); // Make sure the panel is disabled on start
+        }
+
+        DOTween.Init();
     }
 
     public void DisplayClientDetails(string clientName)
     {
         if (panel != null)
         {
-            panel.SetActive(true); // Enable the panel when a client button is clicked
+            panel.SetActive(true); // Enable the panel
+            // Fade in the panel
+            panel.GetComponent<CanvasGroup>().DOFade(1, 0.5f).From(0);
         }
+
         DataManager.Client client = dataManager.GetClientByName(clientName);
         DataManager.ClientDetail detail = dataManager.GetClientDetail(client.id);
 
         if (detail != null)
         {
-            // Update the TextMeshPro text with the client's details
+            // Prepare the TextMeshPro text
             detailsText.text = $"Name: {detail.name}\nPoints: {detail.points}\nAddress: {detail.address}";
+            // Slide up animation for TextMeshPro text
+            detailsText.rectTransform.DOLocalMoveY(0, 0.5f).From(new Vector2(detailsText.rectTransform.localPosition.x, -50));
         }
         else
         {
