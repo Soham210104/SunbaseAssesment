@@ -109,6 +109,11 @@ public class DataManager : MonoBehaviour
         return clientsList.FindAll(client => !client.isManager);
     }
 
+    public DataManager.Client GetClientByName(string name)
+    {
+        return clientsList.Find(client => client.label == name);
+    }
+
     [Serializable]
     public class Client
     {
