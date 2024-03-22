@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Circle
+  - Client1
+  - Client2
+  - Client3
+  - ClientButton
   layers:
   - Default
   - TransparentFX
